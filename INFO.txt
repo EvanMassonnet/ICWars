@@ -1,0 +1,16 @@
+Pour les commandes, utilisez les flèches directionnelles pour vous déplacer, appuyez sur entrer pour sélectionner une unité, 
+tab pour passer votre tour ou désélectionner une unité 
+Pour les actions,  appuyez sur W pour attendre ou A pour attaquer
+Vous pouvez passer au niveau suivant avec N ou recommencer depuis le début avec R
+
+
+Vous disposez de 2 types d’unité, des étudiants chétifs  et des méka tout droit sortie d’animes japonais des années 90. 
+Vous devez combattre les professeurs d’informatiques et leurs assistants.
+Attention, certaines unités disposent d’une compétence spécial : baroud d’honneur ! 
+Lorsque l’unité est détruite, elle peut vous infliger une dernière fois des dégâts (PS : c’est juste un bug, j’ai pas eu le temps de le corriger)
+
+
+Il existe 4 niveaux ainsi que des nouveaux types de cases, la lave et la glace.
+Si une unité traverse une zone de lave, elle subira 1 point de dégâts et 
+si elle est sur la glace, chaque attaque reçu lui infligera 2 points de dégâts supplémentaires. Utilisez ces cases pour réussir les niveaux 3 et 4 !
+ 

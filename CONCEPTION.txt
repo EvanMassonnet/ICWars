@@ -1,0 +1,85 @@
+############ Choix de conception ############ 
+
+La création des unités est réalisée par le level, les unités créées sont donnés à ICWars qui créé les joueurs,  
+
+Cela permet de faire varier le nombre et le type d’unité en fonction du niveau. 
+
+Les actions sont proposées seulement après un déplacement, si aucune action  
+n’est sélectionné l’unité est considéré comme utilisé 
+
+
+Lors du déplacement d’une unité, on ne peut pas passer sur une autre unité  
+
+
+Les unités ont été rééquilibré, les tanks vont moins loin et attaquent de moins loin mais font 
+Plus de dégât et les soldats vont plus loin et attaquent de plus loin mais font moins de dégât. 
+
+
+############ Ajout ############ 
+
+
+ICWarsEndGamePanle : créé à partir du model de ICWarsInfoPanel, sert a affiché un écran   
+de game over en fin de partie, se trouve dans ICWars/gui avec les autres guis. 
+
+
+NameGenerator : permet d’obtenir un nom aléatoire depuis un fichier texte, les fichiers textes utilisés sont  
+
+List_info : la liste des étudiants en informatique 
+
+List_SysCom : la liste des étudiants en système de communication 
+
+List_Teacher : la liste des enseignants et des assistants d’informatique 
+
+Ces listes ont été récupéré sur le site de l’EPFL et sont utilisé pour donner un nom à chaque unité. 
+
+La classe se trouve dans game car elle n’est pas spécifique à Icwars et peut être utilisé pour d’autre jeux. 
+
+
+Des effets ont été ajouté à certaines cellules de la grille dans l’enum des cellules. 
+
+
+Des sprites et des sons ont été ajouté, les sources ont été spécifié dans res/images/sprites/icwars/new/sources.md 
+
+
+############ Modification ############ 
+
+
+Certaines modifications ont également été apporté au code fourni : 
+
+
+class transform : ajout de mirrorX et mirrorY , utilisé pour inverser les sprites d'animations lors d'un changement de direction 
+
+
+ICWarsInfoPanel : modification du canvas pour permettre l’affichage des noms 
+
+
+SwingSound : modification de la méthode openedClip : il semblerait que le paramètre offset  
+doit être un multiple de 4 sinon il y a une erreur 
+
+
+Area : ajout de la méthode requestSong qui permet de lire un son, je me suis appercu que  
+la méthode bip existé mais trop tard … 
+ 
+
+Animation : ajout de la methode isCompleted qui permet de savoir si une animation un fini dans une liste d’animation 
+
+SoundItem : modification de applyVolume , setValue = -Infinity si la  
+valeur est inferieur a -80 sinon il y a une erreur 
+  
+
+MovableAreaEntity : modification de orientate, retourne true si la nouvelle orientation est 
+la même que l’ancienne (sans attendre la fin du déplacement) 
+
+Animation : ajout de setAlpha, permet de définir l’alpha sur une animation 
+
+
+Autre problème :  
+
+J’ai remarqué un problème avec les interactions, les méthodes onLeaving et onEntering sont appelé en même temps  
+lors d’un déplacement cependant après l’appel de onEntering , l’unité continue d’interagir avec l’ancienne  
+cellule quelque fois (je pense que le nombre de fois dépend du paramètre frameForMove de move, il semble etre de frameForMove / 2 ) 
+Ce problème semble liée au passage de coordonné continu a des coordonnées discrètes, en effet on utilise  
+Math.round() pour déterminer les coordonnées de l’unité et pour choisir avec quelle cellule elle interagie  
+donc lors de la première moitié du déplacement, l’unité se trouve dans son ancienne cellule et lors de  
+la seconde moitié il est dans sa nouvelle cellule. 
+Je n’ai cependant pas trouvé de moyen pour corriger le problème. 
